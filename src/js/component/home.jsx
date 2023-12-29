@@ -1,24 +1,38 @@
-import React from "react";
+import React, {useState} from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+<script src="https://kit.fontawesome.com/c8a0c95e22.js" crossorigin="anonymous"></script>
+
 
 //create your first component
 const Home = () => {
+	const [inputValue, setInputValue] = useState("");
+	const [list, setList] = useState([]);
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container">
+			<h1>TODOLIST {inputValue}</h1>
+			<ul>
+				<li>
+					<input type="text"
+					onChange={(e) => setInputValue(e.target.value)} 
+					value={inputValue} 
+					onKeyPress={(e) => {
+						if(e.key === "Enter"){
+							setList(list.concat([inputValue]));
+							setInputValue("");
+						}
+					}}
+					placeholder="¿Algo más que agregar?"></input>
+				</li>
+				{list.map((item, index) =>(
+					<li>{item} {" "}
+						<span 
+						onClick={() => 
+						setList(
+							list.filter((t, currentItem) => index != currentItem))}>X</span>
+					</li>
+				))}
+			</ul>
+			<div>{list.length} pendientes</div>
 		</div>
 	);
 };

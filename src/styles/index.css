@@ -10,3 +10,37 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+ul{
+    padding: 0;
+}
+
+ul li{
+    border: 1px solid blue;
+    color: blue;
+    list-style: none;
+    padding: 10px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 20px;
+    color: blue;
+}
+
+input{
+    border: none;
+    width: 100%;
+}
+
+input::placeholder{
+    color: blue;
+}
+
+span{
+    font-weight: bolder;
+    color: blue;
+    font-size: 25px;
+    line-height: 25px;
+    float: right;
+}
